@@ -23,6 +23,7 @@ public:
 		isProportionFixed(false),
 		startMousePos(QPoint()),
 		proportion(INIT_PROPORTION),
+        deltas(INIT_PROPORTION),
 		backgroundColor(Qt::black),
 		croppingRectBorderColor(Qt::white)
 	{}
@@ -42,10 +43,12 @@ public:
 	bool isProportionFixed;
 	// Начальная позиция курсора при изменении размера области обрезки
 	QPointF startMousePos;
-	// Пропорции
-	// width  - приращение по ширине
-	// height - приращение по высоте
+    // Пропорции
 	QSizeF proportion;
+    // Приращения
+    // width  - приращение по x
+    // height - приращение по y
+    QSizeF deltas;
 	// Цвет заливки фона под изображением
 	QColor backgroundColor;
 	// Цвет рамки области обрезки

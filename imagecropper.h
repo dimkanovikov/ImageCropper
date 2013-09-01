@@ -22,70 +22,62 @@ public slots:
 	// Установить цвет рамки области обрезки
 	void setCroppingRectBorderColor(const QColor& _borderColor);
 	// Установить пропорции области выделения
-	void setProportion(const QSizeF& _proportion );
+	void setProportion(const QSizeF& _proportion);
 	// Использовать фиксированные пропорции области виделения
-	void setIsProportionFixed ( bool );
+	void setIsProportionFixed(const bool _isFixed);
 	// Обрезать изображение
-	QPixmap cropImage ();
+	const QPixmap cropImage();
 
 protected:
-    virtual void paintEvent(QPaintEvent *);
-    virtual void mousePressEvent  (QMouseEvent *ev);
-    void mouseMoveEvent   (QMouseEvent *ev);
-    virtual void mouseReleaseEvent(QMouseEvent *ev);
+	virtual void paintEvent(QPaintEvent* _event);
+	virtual void mousePressEvent(QMouseEvent* _event);
+	virtual void mouseMoveEvent(QMouseEvent* _event);
+	virtual void mouseReleaseEvent(QMouseEvent* _event);
 
 private:
-    // Местоположение курсора мыши над виджетом
-    inline bool isPointNearSide ( int sideCoordinate,
-                                  int pointCoordinate
-                                  ) const;
-	CursorPosition cursorPosition ( const QRectF widgetSize,
-									const QPointF mousePosition
-                                    );
-	QCursor cursorIcon ( const QRectF widgetSize,
-						 const QPointF mousePosition
-                         );
+	// Определение местоположения курсора над виджетом
+	CursorPosition cursorPosition(const QRectF& _cropRect, const QPointF& _mousePosition);
+	// Обновить иконку курсора соответствующую местоположению мыши
+	void updateCursorIcon(const QPointF& _mousePosition);
 
-    // Получить размер виджета после его изменения мышью
-    // ======
-    // mouseDelta - разница между начальным положением перемещения мыши и текущим
-    // proportions - если нужно сохранить пропорции сторон виджета,
-    // то обязательно необходимо передать в метод их отношение, в
-    // противном случае, их не нужно передавать
-    // ------
+	// Получить размер виджета после его изменения мышью
+	// --------
     // Контракты:
     // 1. Метод должен вызываться, только при зажатой кнопке мыши
     //    (т.е. при перемещении или изменении размера виджета)
-	QRectF calculateGeometry(const QRectF sourceGeometry,
-                            const CursorPosition cursorPosition,
-							const QPointF mouseDelta,
-                            const QSizeF proportions = QSizeF()
-                            );
+	// --------
+	// В случае неудачи возвращает null-прямоугольник
+	const QRectF calculateGeometry(
+			const QRectF& _sourceGeometry,
+			const CursorPosition _cursorPosition,
+			const QPointF& _mouseDelta
+			);
     // Получить размер виджета после его изменения мышью
     // Метод изменяет виджет не сохраняя начальных пропорций сторон
     // ------
     // Контракты:
     // 1. Метод должен вызываться, только при зажатой кнопке мыши
     //    (т.е. при перемещении или изменении размера виджета)
-	QRectF calculateGeometryWithCustomProportions(const QRectF sourceGeometry,
-                                                 const CursorPosition cursorPosition,
-												 const QPointF mouseDelta
-                                                 );
+	const QRectF calculateGeometryWithCustomProportions(
+			const QRectF& _sourceGeometry,
+			const CursorPosition _cursorPosition,
+			const QPointF& _mouseDelta
+			);
     // Получить размер виджета после его изменения мышью
     // Метод изменяет виджет сохраняя начальные пропорции сторон
     // ------
     // Контракты:
     // 1. Метод должен вызываться, только при зажатой кнопке мыши
     //    (т.е. при перемещении или изменении размера виджета)
-	QRectF calculateGeometryWithFixedProportions(const QRectF sourceGeometry,
-                                                 const CursorPosition cursorPosition,
-												 const QPointF mouseDelta,
-                                                 const QSizeF proportions
+	const QRectF calculateGeometryWithFixedProportions(const QRectF &_sourceGeometry,
+												 const CursorPosition _cursorPosition,
+												 const QPointF &_mouseDelta,
+												 const QSizeF &_deltas
                                                  );
 
 private:
 	// Private data implementation
-	ImageCropperPrivate* p_impl;
+	ImageCropperPrivate* pimpl;
 };
 
 #endif // IMAGECROPPER_H

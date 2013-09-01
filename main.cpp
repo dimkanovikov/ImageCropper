@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 
 
     ImageCropper *w = new ImageCropper(&window);
+	w->resize( 600, 600 );
     w->setProportion(QSize(4,3));
 	w->setImage(QPixmap("img.jpg"));
 	w->setBackgroundColor( Qt::lightGray );
