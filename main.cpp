@@ -2,7 +2,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QCheckBox>
-#include "ImageCropper.h"
+#include "imagecropper.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +13,9 @@ int main(int argc, char *argv[])
 
     ImageCropper *w = new ImageCropper(&window);
     w->setProportion(QSize(4,3));
-    w->setPixmap(QPixmap("PATH_TO_IMAGE"));
+	w->setImage(QPixmap("img.jpg"));
+	w->setBackgroundColor( Qt::lightGray );
+	w->setCroppingRectBorderColor( Qt::magenta);
 
     QVBoxLayout *layout = new QVBoxLayout(&window);
     layout->addWidget(w);

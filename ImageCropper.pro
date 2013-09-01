@@ -10,10 +10,10 @@ TARGET = ImageCropper
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        ImageCropper.cpp
+SOURCES += main.cpp \
+    imagecropper.cpp
 
-HEADERS  += ImageCropper.h
-
-RESOURCES += \
-    ../cropper/res.qrc
+HEADERS  += \
+    imagecropper_p.h \
+    imagecropper.h \
+    imagecropper_e.h
