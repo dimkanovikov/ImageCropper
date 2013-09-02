@@ -9,11 +9,18 @@ QT       += core gui
 TARGET = ImageCropper
 TEMPLATE = app
 
+SRCDIR = ../src
+INCLUDEPATH += $${SRCDIR}
 
 SOURCES += main.cpp \
-    imagecropper.cpp
+    $${SRCDIR}/imagecropper.cpp \
+    demowidget.cpp
 
 HEADERS  += \
-    imagecropper_p.h \
-    imagecropper.h \
-    imagecropper_e.h
+    $${SRCDIR}/imagecropper_p.h \
+    $${SRCDIR}/imagecropper.h \
+    $${SRCDIR}/imagecropper_e.h \
+    demowidget.h
+
+RESOURCES += \
+    resources.qrc

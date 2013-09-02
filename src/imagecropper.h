@@ -25,6 +25,8 @@ public slots:
 	void setProportion(const QSizeF& _proportion);
 	// Использовать фиксированные пропорции области виделения
 	void setIsProportionFixed(const bool _isFixed);
+
+public:
 	// Обрезать изображение
 	const QPixmap cropImage();
 
