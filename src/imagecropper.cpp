@@ -1,6 +1,7 @@
 #include "imagecropper.h"
 
-#include <QtGui>
+#include <QMouseEvent>
+#include <QPainter>
 
 ImageCropper::ImageCropper(QWidget* parent) :
 	QWidget(parent),
@@ -77,7 +78,7 @@ void ImageCropper::setProportion(const QSizeF& _proportion)
 
 }
 
-void ImageCropper::setIsProportionFixed(const bool _isFixed)
+void ImageCropper::setProportionFixed(const bool _isFixed)
 {
 	if (pimpl->isProportionFixed != _isFixed) {
 		pimpl->isProportionFixed = _isFixed;

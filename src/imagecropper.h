@@ -4,7 +4,7 @@
 #include "imagecropper_p.h"
 #include "imagecropper_e.h"
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class ImageCropper : public QWidget
 {
@@ -24,7 +24,7 @@ public slots:
 	// Установить пропорции области выделения
 	void setProportion(const QSizeF& _proportion);
 	// Использовать фиксированные пропорции области виделения
-	void setIsProportionFixed(const bool _isFixed);
+	void setProportionFixed(const bool _isFixed);
 
 public:
 	// Обрезать изображение
