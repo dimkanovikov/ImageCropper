@@ -220,7 +220,7 @@ void ImageCropper::mousePressEvent(QMouseEvent* _event)
 
 void ImageCropper::mouseMoveEvent(QMouseEvent* _event)
 {
-	QPointF mousePos = _event->posF(); // относительно себя (виджета)
+	QPointF mousePos = _event->pos(); // относительно себя (виджета)
 	//
 	if (!pimpl->isMousePressed) {
 		// Обработка обычного состояния, т.е. не изменяется размер

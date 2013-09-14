@@ -1,6 +1,10 @@
 #include "demowidget.h"
 #include <imagecropper.h>
-#include <QtGui>
+
+#include <QLabel>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 DemoWidget::DemoWidget(QWidget* _parent) :
 	QWidget(_parent)
