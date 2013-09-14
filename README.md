@@ -42,4 +42,4 @@ Qt 4.6 and greater, or Qt 5.1 and greater
 License
 -------------
 
-GNU LGPL v3, http://www.gnu.org/copyleft/lesser.html
+[GNU LGPL v3](http://www.gnu.org/copyleft/lesser.html)
