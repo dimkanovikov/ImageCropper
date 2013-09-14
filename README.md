@@ -6,7 +6,7 @@ Qt Widget for cropping images.
 Using:
 -------------
 
-Use ImageCropper is easy. First you need to create instance and configure it:
+Use ImageCropper - it's easy. First you need to create instance and configure it:
 
 ```cpp
 // Create instance
@@ -33,6 +33,11 @@ And when you need crop image, just do it:
 ```cpp
 QPixmap croppedImage = imageCropper->cropImage();
 ```
+
+Build
+-------------
+
+Qt 4.6 and greater, or Qt 5.1 and greater
 
 License
 -------------
