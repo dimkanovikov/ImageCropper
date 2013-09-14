@@ -3,12 +3,15 @@
 #include <QMouseEvent>
 #include <QPainter>
 
+namespace {
+	static const QSize WIDGET_MINIMUM_SIZE(300, 300);
+}
+
 ImageCropper::ImageCropper(QWidget* parent) :
 	QWidget(parent),
 	pimpl(new ImageCropperPrivate)
 {
-	static const QSize minimumSize(300, 300);
-	setMinimumSize(minimumSize);
+	setMinimumSize(WIDGET_MINIMUM_SIZE);
 	setMouseTracking(true);
 }
 
@@ -143,6 +146,16 @@ void ImageCropper::paintEvent(QPaintEvent* _event)
 	}
 	// Рисуем область обрезки
 	{
+		// ... если это первое отображение после инициилизации, то центруем областо обрезки
+		if (pimpl->croppingRect.isNull()) {
+			const int width = WIDGET_MINIMUM_SIZE.width()/2;
+			const int height = WIDGET_MINIMUM_SIZE.height()/2;
+			pimpl->croppingRect.setSize(QSize(width, height));
+			float x = (this->width() - pimpl->croppingRect.width())/2;
+			float y = (this->height() - pimpl->croppingRect.height())/2;
+			pimpl->croppingRect.moveTo(x, y);
+		}
+
 		// ... рисуем затемненную область
 		QPainterPath p;
 		p.addRect(pimpl->croppingRect);

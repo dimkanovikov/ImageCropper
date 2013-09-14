@@ -19,7 +19,7 @@ DemoWidget::DemoWidget(QWidget* _parent) :
 	// Использовать фиксированные пропорции
 	QCheckBox* fixedProportionsCombo = new QCheckBox("Fix proportion to (4x3)", this);
 	connect(fixedProportionsCombo, SIGNAL(toggled(bool)),
-			m_imageCropper, SLOT(setIsProportionFixed(bool)));
+			m_imageCropper, SLOT(setProportionFixed(bool)));
 	// Кадрировать выделенную область
 	QPushButton* cropBtn = new QPushButton("Crop", this);
 	connect(cropBtn, SIGNAL(clicked()), this, SLOT(crop()));

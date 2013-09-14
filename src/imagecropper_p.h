@@ -8,7 +8,7 @@
 #include <QtGui/QColor>
 
 namespace {
-	const QRect INIT_CROPPING_RECT = QRect(QPoint(0, 0), QSize(40, 40));
+	const QRect INIT_CROPPING_RECT = QRect();
 	const QSizeF INIT_PROPORTION = QSizeF(1.0, 1.0);
 }
 
